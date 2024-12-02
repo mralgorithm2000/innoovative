@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\NewsRepositoryInterface;
+use App\Interfaces\FetchedNewsRepositoryInterface;
 use App\Models\News;
 use Illuminate\Support\Collection;
 
-class TheGuardianRepository implements NewsRepositoryInterface
+class TheGuardianRepository implements FetchedNewsRepositoryInterface
 {
     public function all(): Collection
     {

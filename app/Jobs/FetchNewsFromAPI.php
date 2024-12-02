@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Interfaces\NewsRepositoryInterface;
+use App\Interfaces\FetchedNewsRepositoryInterface;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
@@ -41,7 +41,7 @@ class FetchNewsFromAPI implements ShouldQueue
      * @param array $parameters The parameters to be sent with the API request.
      * @param string $url The URL of the API to fetch data from.
      */
-    public function __construct(array $parameters, string $url, NewsRepositoryInterface $repositoryInstance)
+    public function __construct(array $parameters, string $url, FetchedNewsRepositoryInterface $repositoryInstance)
     {
         $this->parameters = $parameters;
         $this->url = $url;

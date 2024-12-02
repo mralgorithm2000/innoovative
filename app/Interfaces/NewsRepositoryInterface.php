@@ -2,14 +2,11 @@
 
 namespace App\Interfaces;
 
-use App\Models\News;
-use Illuminate\Support\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface NewsRepositoryInterface
 {
-    public function all(): Collection;
-    public function find(int $id): ?News;
-    public function create(array $data): void;
-    public function update(int $id, array $data): bool;
-    public function delete(int $id): bool;
+    public function all(Request $reuqest): LengthAwarePaginator;
+    public function sources(): LengthAwarePaginator;
 }

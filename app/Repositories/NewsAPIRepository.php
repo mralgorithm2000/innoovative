@@ -2,22 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\NewsRepositoryInterface;
+use App\Interfaces\FetchedNewsRepositoryInterface;
 use App\Models\News;
 use Illuminate\Support\Collection;
 
-class NewsAPIRepository implements NewsRepositoryInterface
+class NewsAPIRepository implements FetchedNewsRepositoryInterface
 {
-    public function all(): Collection
-    {
-        return News::all();
-    }
-
-    public function find(int $id): ?News
-    {
-        return News::find($id);
-    }
-
     public function create(array $fetchedData): void
     {
         // Initialize an array to hold new news data
@@ -47,17 +37,5 @@ class NewsAPIRepository implements NewsRepositoryInterface
         if (!empty($content)) {
             News::insert($content);
         }
-    }
-
-    public function update(int $id, array $data): bool
-    {
-        $news = $this->find($id);
-        return $news ? $news->update($data) : false;
-    }
-
-    public function delete(int $id): bool
-    {
-        $news = $this->find($id);
-        return $news ? $news->delete() : false;
     }
 }

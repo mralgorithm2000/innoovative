@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('source');
             $table->text('description')->nullable();
             $table->string('author')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->index(['title','url','source']);
         });
     }
