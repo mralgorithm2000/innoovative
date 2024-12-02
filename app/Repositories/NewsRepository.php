@@ -17,7 +17,8 @@ class NewsRepository implements NewsRepositoryInterface
     }
 
     public function all(Request $request): LengthAwarePaginator{
-        return $this->news->filter($request)->paginate($request->pageSize);
+        $pageSize = ($request->pageSize == '') ? 25 : $request->pageSize;
+        return $this->news->filter($request)->paginate($pageSize);
     }
 
     public function sources(): LengthAwarePaginator{
